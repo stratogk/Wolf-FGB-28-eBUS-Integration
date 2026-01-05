@@ -1,0 +1,46 @@
+type,circuit,level,name,comment,qq,zz,pbsb,id,*name,part,type,divisor/values,unit,comment
+*w,
+*r,
+r,,,Hg01,HG 01 - Hysterese Vorlauftemperatur (5-30),,,5022,002200,,,UIN,10,°C,Temperatur
+
+r,,,Hg02,HG 02 - Untere Geblaesedrehzahl (25-100),,,5022,005a01,,,UIN,,%,percent
+r,,,Hg03,HG 03 - Obere Geblaesedrehzahl Warmwasser,,,5022,005901,,,UIN,,%,percent
+r,,,Hg04,HG 04 - Obere Geblaesedrehzahl Heizung (1-100),,,5022,003f01,,,UIN,,%,percent
+r,,,Hg06,HG 06 - Heizkreispumpenbetriebsart (0-2),,,5022,004101,,,UIN,,,
+
+r,,,Hg07,HG 07 - Heizkreispumpennachlauf (0-30),,,5022,004201,,,UIN,,min,Minuten
+
+r,,,Hg08,HG 08 - Maximale Vorlaufsolltemperatur (40-90),,,5022,008402,,,UIN,10,°C,Temperatur
+
+r,,,Hg09,HG 09 - Taktsperre (1-30),,,5022,004301,,,UIN,,min,Minuten
+
+r,,,Hg10,HG 10 - eBus-Adresse,,,5022,007801,,,UIN,,C,flagsheatingstatus,
+r,,,Hg11,HG 11 - Warmwasserschnellstart,,,5022,006a01,,,UIN,10,°C,Temperatur
+r,,,Hg12,HG 12 - Gasart,,,5022,006b01,,,UIN,,,
+r,,,Hg15,HG 15 - Speicherhysterese (1-30),,,5022,004001,,,UIN,10,°C,Temperatur
+
+r,,,Hg16,HG 16 - Pumpenleistung HK minimal (20-100),,,5022,005501,,,UIN,,min,Minuten
+
+r,,,Hg17,HG 17 - Pumpenleistung HK maximal (20-100),,,5022,005601,,,UIN,,min,Minuten
+
+r,,,Hg21,HG 21 - Kesselminimaltemperatur,,,5022,001f00,,,UIN,10,°C,Temperatur
+
+r,,,Hg22,HG 22 - Kesselmaximaltemperatur,,,5022,002700,,,UIN,10,°C,Temperatur
+
+r,,,Hg73,HG 73 - Io-Istwert,,,5022,007001,,,UIN,,min,Minuten
+r,,,Hg74,HG 74 - Geblaesedrehzahl,,,5022,00f601,,,UIN,,U/sec,
+r,,,Hg75,HG 75 - Warmwasserdurchsatz,,,5022,006c01,,,UIN,,min,Minuten
+r,,,Hg9x,HG 9x - Netzbetriebsstunden,,,5022,002802,,,UIN,,h,Stunden
+r,,,Hg90,HG 90 - Brennerbetriebsstunden,,,5022,002a02,,,UIN,,h,Stunden
+r,,,Hg91,HG 91 - Brennerstarts,,,5022,002602,,,UIN,,,
+r,,,Pressure,Anlagendruck,,,5022,CC1A27,,,UIN,100,bar
+r,,,Flowtempdesired,Vorlauf Sollwert,,,5022,000200,,,UIN,10,°C,Temperatur
+r,,,Flowtemp,Vorlauf Istwert,,,5022,000d00,,,UIN,10,°C,Temperatur
+r,,,Returntemp,Ruecklauf Ist-Temperatur,,,5022,001600,,,UIN,10,°C,Temperatur
+r,,,Hwctempdesired,Warmwasser Solltemperatur,,,5022,000300,,,UIN,10,°C,Temperatur
+r,,,Hwctemp,Warmwasser Ist-Temperatur,,,5022,000e00,,,UIN,10,°C,Temperatur
+r,,,Pump,PWM Pumpe,,,5022,006d01,,,UIN,,%,percent
+r,,,BrennerStatus,BrennerStatus,,,5022,CC5427,,,UIN,16=Spreizung_KF;15=Spreizung_hoch;14=Gasdruck;13=Gradienten_Überwachung;12=Störung;11=Abgasklappe;10=Betrieb_ohne_Brenner;9=Taktsperre;8=Softstart;7=Nachspülen;6=Ventilprüfung;5=Ein;4=Stabilisierung;3=Zünden;2=Vorspülen;1=Ruhekontakt;0=Aus;,C,flagsheatingstatus
+r,,,BrennerSoftware,Brenner Software,,,5022,CC9A01,,,UCH,100
+r,,,Betriebsart,Betriebsart,,,5022,CC5327,,,UIN,22=Durchfluss gering;21=Externe Deaktivierung;20=Warmwasser_Schnellstart;19=Kalibration_Kombibetrieb;18=Kalibration_Warmwasserbetrieb;17=Kalibration_Heizbetrieb;16=Kalibration;15=GLT_Betrieb;14=Kaskadenbetrieb;13=Standby;12=Frostschutz;11=Nachlauf Heizkreispumpe;10=Heizbetrieb;9=Mindest-Kombizeit;8=Warmwassernachlauf;7=Warmwasserbetrieb;6=Parallelbetrieb;5=Kombibetrieb;4=Schornsteinfeger;3=Frost Warmwasser;2=Frost Heizkreis;1=Start;0=Test,C,flagsheatingstatus
+r,,,Raumtemperatur,Raumtemperatur,,,5022,77b427,,,UIN,10,°C,Temperatur
