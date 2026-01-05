@@ -1,0 +1,160 @@
+  - type: sections
+    max_columns: 4
+    title: EbusD
+    path: ebusd
+    sections:
+      - type: grid
+        cards:
+          - square: false
+            type: grid
+            columns: 2
+            cards:
+              - type: gauge
+                entity: sensor.wolf_ebus_hc_flowtemp
+                name: Προσαγωγή (Νερό)
+                min: 0
+                max: 90
+                needle: true
+                severity:
+                  green: 30
+                  yellow: 60
+                  red: 80
+              - type: gauge
+                entity: sensor.wolf_ebus_hc_pressure
+                name: Πίεση Δικτύου
+                min: 0
+                max: 4
+                needle: true
+                severity:
+                  green: 1.2
+                  yellow: 2.5
+                  red: 3
+              - type: gauge
+                entity: sensor.wolf_pump_status_fixed
+                name: Ισχύς Αντλίας
+                unit: '%'
+                min: 0
+                max: 100
+                needle: true
+                severity:
+                  green: 1
+                  yellow: 50
+                  red: 90
+              - type: gauge
+                entity: sensor.wolf_flame_quality_fixed
+                name: Ποιότητα Φλόγας
+                min: 0
+                max: 100
+                unit: '%'
+                needle: true
+                severity:
+                  red: 10
+                  yellow: 40
+                  green: 80
+            title: Wolf FGB-28 Professional Monitor
+      - type: grid
+        cards:
+          - type: history-graph
+            title: Διάγραμμα Θερμοκρασιών (τελευταία ώρα)
+            hours_to_show: 1
+            refresh_interval: 30
+            entities:
+              - entity: sensor.wolf_ebus_hc_flowtemp
+                name: Προσαγωγή
+              - entity: sensor.wolf_flow_temp_desired_fixed
+                name: Στόχος
+              - entity: sensor.wolf_ebus_hc_returntemp
+                name: Επιστροφή
+      - type: grid
+        cards:
+          - type: glance
+            title: Ζωντανά Δεδομένα
+            columns: 4
+            entities:
+              - entity: sensor.wolf_fan_speed_fixed
+                name: Ανεμιστήρας
+                icon: mdi:fan
+              - entity: sensor.wolf_dhw_temp_fixed_2
+                name: Μπόιλερ
+                icon: mdi:water-boiler
+              - entity: sensor.wolf_ebus_hc_hg12
+                name: Τύπος Αερίου
+                icon: mdi:gas-burner
+              - entity: sensor.wolf_ebus_hc_hg10
+                name: eBus ID
+      - type: grid
+        cards:
+          - type: entities
+            title: 🌡️ Όρια & Θερμοκρασίες
+            show_header_toggle: false
+            state_color: true
+            entities:
+              - entity: sensor.wolf_flow_temp_desired_fixed
+                name: Τρέχων Στόχος (SetPoint)
+                icon: mdi:target
+              - entity: sensor.wolf_ebus_hc_hg01
+                name: Hg01 - Υστέρηση Προσαγωγής
+                icon: mdi:arrow-expand-vertical
+              - entity: sensor.wolf_ebus_hc_hg08
+                name: Hg08 - Μέγιστο Όριο Προσαγωγής
+                icon: mdi:thermometer-alert
+              - entity: sensor.wolf_ebus_hc_hg15
+                name: Hg15 - Υστέρηση Μπόιλερ (ΖΝΧ)
+                icon: mdi:water-sync
+              - entity: sensor.wolf_ebus_hc_hg21
+                name: Hg21 - Ελάχιστη Θερμ. Λέβητα
+              - entity: sensor.wolf_max_boiler_temp_hg22_fixed
+                name: Hg22 - Μέγιστη Θερμ. Λέβητα
+      - type: grid
+        cards:
+          - type: entities
+            title: 🔥 Καύση & Ισχύς
+            show_header_toggle: false
+            entities:
+              - entity: sensor.wolf_ebus_hc_hg02
+                name: Hg02 - Ελάχιστη Ισχύς Ανεμιστήρα
+                icon: mdi:fan-chevron-down
+              - entity: sensor.wolf_ebus_hc_hg03
+                name: Hg03 - Μέγιστη Ισχύς Θέρμανσης
+                icon: mdi:fire
+              - entity: sensor.wolf_ebus_hc_hg04
+                name: Hg04 - Μέγιστη Ισχύς ΖΝΧ (Boiler)
+                icon: mdi:water-boiler
+              - entity: sensor.wolf_quick_start_hg11_fixed
+                name: Hg11 - Γρήγορη Εκκίνηση ΖΝΧ
+              - entity: sensor.wolf_ebus_hc_hg09
+                name: Hg09 - Χρόνος Αναμονής (Anti-cycle)
+                icon: mdi:timer-sand
+      - type: grid
+        cards:
+          - type: entities
+            title: 💧 Υδραυλικά & Αντλία
+            show_header_toggle: false
+            entities:
+              - entity: sensor.wolf_pump_mode_hg06_fixed
+                name: Hg06 - Mode Λειτουργίας Αντλίας
+                icon: mdi:pump-off
+              - entity: sensor.wolf_ebus_hc_hg07
+                name: Hg07 - Χρόνος Μετακυκλοφορίας
+                icon: mdi:timer-outline
+              - entity: sensor.wolf_ebus_hc_hg16
+                name: Hg16 - Ελάχιστη Ισχύς Αντλίας
+              - entity: sensor.wolf_ebus_hc_hg17
+                name: Hg17 - Μέγιστη Ισχύς Αντλίας
+              - entity: sensor.wolf_ebus_hc_hg75
+                name: Hg75 - Ροή ΖΝΧ (Flow)
+      - type: grid
+        cards:
+          - type: entities
+            title: 📊 Στατιστικά Χρήσης
+            show_header_toggle: false
+            entities:
+              - entity: sensor.wolf_ebus_hc_hg90
+                name: Hg90 - Ώρες Λειτουργίας Καυστήρα
+                icon: mdi:fire-circle
+              - entity: sensor.wolf_ebus_hc_hg91
+                name: Hg91 - Αριθμός Εκκινήσεων (Startups)
+                icon: mdi:counter
+              - entity: sensor.wolf_ebus_hc_hg9x
+                name: Hg9x - Συνολικές Ώρες Ρεύματος
+                icon: mdi:power-plug
