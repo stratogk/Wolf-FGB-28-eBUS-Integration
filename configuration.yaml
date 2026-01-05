@@ -1,0 +1,76 @@
+template:
+  - sensor:
+      # 1. ΣΤΟΧΟΣ ΘΕΡΜΑΝΣΗΣ (Διορθώνει το 3276.8 -> Standby)
+      - name: "Wolf Flow Temp Desired Fixed"
+        unique_id: "wolf_flow_temp_desired_fixed"
+        unit_of_measurement: "°C"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_flowtempdesired') | float(0) %}
+          {% if val > 100 %} Standby {% else %} {{ val }} {% endif %}
+        icon: mdi:target
+
+      # 2. ΑΝΤΛΙΑ ΚΥΚΛΟΦΟΡΗΤΗ (Διορθώνει το 32768 -> 0%)
+      - name: "Wolf Pump Status Fixed"
+        unique_id: "wolf_pump_status_fixed"
+        unit_of_measurement: "%"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_pump') | float(0) %}
+          {% if val > 100 %} 0 {% else %} {{ val }} {% endif %}
+        icon: mdi:pump
+
+      # 3. ΣΤΡΟΦΕΣ ΑΝΕΜΙΣΤΗΡΑ (Διορθώνει το 32768 -> 0 rpm)
+      - name: "Wolf Fan Speed Fixed"
+        unique_id: "wolf_fan_speed_fixed"
+        unit_of_measurement: "rpm"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_hg74') | float(0) %}
+          {% if val > 30000 %} 0 {% else %} {{ val }} {% endif %}
+        icon: mdi:fan
+
+      # 4. ΠΟΙΟΤΗΤΑ ΦΛΟΓΑΣ / ΙΟΝΙΣΜΟΣ (Διορθώνει το 32768 -> 0)
+      - name: "Wolf Flame Quality Fixed"
+        unique_id: "wolf_flame_quality_fixed"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_hg73') | float(0) %}
+          {% if val > 30000 %} 0 {% else %} {{ val }} {% endif %}
+        icon: mdi:fire
+
+      # 5. MODE ΑΝΤΛΙΑΣ (Διορθώνει το 32768 -> Auto)
+      - name: "Wolf Pump Mode Hg06 Fixed"
+        unique_id: "wolf_pump_mode_hg06_fixed"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_hg06') | float(0) %}
+          {% if val > 30000 %} Auto {% else %} {{ val }} {% endif %}
+
+      # 6. ΓΡΗΓΟΡΗ ΕΚΚΙΝΗΣΗ (Διορθώνει το 3276.8 -> Off)
+      - name: "Wolf Quick Start Hg11 Fixed"
+        unique_id: "wolf_quick_start_hg11_fixed"
+        unit_of_measurement: "°C"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_hg11') | float(0) %}
+          {% if val > 100 %} Off {% else %} {{ val }} {% endif %}
+      
+      # 7. ΜΠΟΙΛΕΡ (Διορθώνει το 3276.8 -> ---)
+      - name: "Wolf DHW Temp Fixed"
+        unique_id: "wolf_dhw_temp_fixed"
+        unit_of_measurement: "°C"
+        state: >
+          {% set val = states('sensor.wolf_ebus_hc_hwctemp') | float(0) %}
+          {% if val > 150 %} --- {% else %} {{ val }} {% endif %}
+        icon: mdi:water-boiler
+        
+      # 8. Max Θερμοκρασία Λέβητα (Hg22) (Διορθώνει το 3276.8 -> ---)
+      - name: "Wolf Max Boiler Temp Hg22 Fixed"
+        unique_id: "wolf_hg22_fixed"
+        unit_of_measurement: "°C"
+        state: >
+          {# Διαβάζουμε την τιμή από το ebusd #}
+          {% set val = states('sensor.wolf_ebus_hc_hg22') | float(0) %}
+          
+          {# Αν είναι πάνω από 150 βαθμούς (δηλαδή 3276.8), δείξε Off #}
+          {% if val > 150 %}
+            Off
+          {% else %}
+            {{ val }}
+          {% endif %}
+        icon: mdi:thermometer-alert
